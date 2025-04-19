@@ -42,11 +42,9 @@ function App() {
     setLastSubmittedData(combinedData);
     setShowPopup(true);
 
-    // Store form data in localStorage
     const formData = JSON.stringify(combinedData);
     localStorage.setItem("formData", formData);
 
-    // Generate a shareable link
     const link = window.location.href + "?formData=" + encodeURIComponent(formData);
     setShareableLink(link);
   };
@@ -65,7 +63,7 @@ function App() {
     const formData = urlParams.get("formData");
     if (formData) {
       const decodedData = JSON.parse(decodeURIComponent(formData));
-      setFields(decodedData.map(f => ({ ...f, value: "" }))); // Reset values, but keep structure
+      setFields(decodedData.map(f => ({ ...f, value: "" })));
     }
   };
 
